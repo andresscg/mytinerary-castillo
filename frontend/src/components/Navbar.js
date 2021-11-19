@@ -26,17 +26,17 @@ const Navbar = () => {
         <div id="navbarResponsive" className="collapse navbar-collapse">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item nav-link">
-              <a className="nav-link fs-4 fw-bold" href="#about">
+              <a className="nav-link fs-4 fw-bold" href="#">
                 Home
               </a>
             </li>
             <li className="nav-item nav-link">
-              <a className="nav-link fs-4 fw-bold" href="#download">
+              <a className="nav-link fs-4 fw-bold" href="#">
                 Cities
               </a>
             </li>
             <li className="nav-item nav-link text-center">
-              <a className="nav-link" href="#contact">
+              <a className="nav-link" href="#">
                 <i class="fas fa-user-circle fs-1"></i>
               </a>
             </li>
