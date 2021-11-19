@@ -1,0 +1,43 @@
+:root{
+  --primary: #fff;
+}
+
+.btn {
+  padding: 8px 20px;
+  border-radius: 2px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  background-color: transparent;
+  color: var(--primary);
+  border: 1px solid  var(--primary);
+  transition: all 0.3s ease-out;
+}
+
+.btn-medium {
+  padding: 8px 20px;
+  font-size: 20px;
+}
+
+.btn-large{
+  padding: 15px 26px;
+  font-size: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .btn-large{
+    font-size: 16px;
+  }
+}
+
+.btn-medium:hover, .btn-large:hover {
+  background-color: var(--primary);
+  color: #242424;
+  transition: all 0.3s ease-out;
+}
