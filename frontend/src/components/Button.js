@@ -8,7 +8,7 @@ const Button = ({children, buttonSize, path}) => {
   const checkSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
   return (
     <Link to={`${path}`} className='btn-mobile'>
-      <button className={`btn btn-primary ${checkSize}`}>
+      <button className={`button button-primary ${checkSize}`}>
         {children}
       </button>
     </Link>

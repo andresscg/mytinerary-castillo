@@ -1,0 +1,41 @@
+.carousel-section {
+  min-height: 100vh;
+  background-color: rgb(209, 40, 40);
+  padding: 20px 30px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-attachment: fixed;
+}
+
+.carousel-section__title {
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  font-weight: 700;
+  font-size: 40px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.carousel {
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0px 30px;
+}
+
+.car-slide {
+  display: grid;
+  height: 500px;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media screen and (max-width: 580px) {
+  .car-slide {
+    grid-template-columns: 1fr;
+  }
+}

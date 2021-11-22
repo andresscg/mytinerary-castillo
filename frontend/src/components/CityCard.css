@@ -1,0 +1,38 @@
+.cardContainer {
+  min-width: 50%;
+  min-height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.cardText{
+  text-align: center;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 20px;
+  padding-top: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+}
+
+.cardSubtitle {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  width: 100%;
+  padding-bottom: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+@media screen and (max-width: 580px){
+  .cardContainer {
+    min-width: 100%;
+    min-height: 25%
+  }
+}

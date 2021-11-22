@@ -2,7 +2,7 @@
   --primary: #fff;
 }
 
-.btn {
+.button {
   padding: 8px 20px;
   border-radius: 2px;
   outline: none;
@@ -13,7 +13,7 @@
   text-transform: uppercase;
 }
 
-.btn-primary {
+.button-primary {
   background-color: transparent;
   color: var(--primary);
   border: 1px solid  var(--primary);

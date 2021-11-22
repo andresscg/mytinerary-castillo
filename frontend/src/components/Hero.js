@@ -10,7 +10,7 @@ const Hero = () => {
       <video src="/assets/bg-video.mp4" autoPlay loop muted></video>
       <h1>MyTinerary</h1>
       <p>Find your perfect trip, designed by insiders who know and love their cities!</p>
-      <Button className="btn" buttonSize='btn-large' path='/cities'>Find your next experience</Button>
+      <Button className="button" buttonSize='btn-large' path='/cities'>Find your next experience</Button>
     </div>
   )
 }

@@ -1,11 +1,13 @@
 import '../../App.css'
 import Hero from '../Hero'
 import React from 'react'
+import CarouselSection from '../CarouselSection'
 
 const Home = () => {
   return (
     <>
-     <Hero></Hero> 
+     <Hero></Hero>
+     <CarouselSection></CarouselSection> 
     </>
   )
 }
