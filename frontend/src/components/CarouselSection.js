@@ -84,7 +84,7 @@ const CarouselSection = () => {
       <Carousel
         className="carousel"
         autoplay={true}
-        autplayInterval={200}
+        autplayInterval={500}
         wrapAround={true}
         // animation="zoom"
         cellAlign="center"
