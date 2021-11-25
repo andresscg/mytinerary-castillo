@@ -4,3 +4,43 @@
   padding: 0;
 }
 
+.cities-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.cities-container video {
+  object-fit: cover;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+
+.cities-input {
+  padding: 10px 10%;
+}
+
+.cities-section {
+  min-height: 100vh;
+  width: 100%;
+  padding: 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .cities-section{
+    grid-template-columns: 1fr;
+  }
+}
+
+.cities-section li p {
+  color: #000;
+}

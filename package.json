@@ -1,0 +1,32 @@
+{
+  "name": "mytinerary-castillo",
+  "version": "1.0.0",
+  "description": "MyTinerary web app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andresscg/mytinerary-castillo.git"
+  },
+  "keywords": [
+    "travel",
+    "node",
+    "javascript",
+    "react",
+    "mongo",
+    "express"
+  ],
+  "author": "Andres Castillo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andresscg/mytinerary-castillo/issues"
+  },
+  "homepage": "https://github.com/andresscg/mytinerary-castillo#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}

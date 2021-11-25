@@ -1,0 +1,25 @@
+.cityContainer {
+  padding: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 20px;
+  border: 2px solid #fff;
+}
+
+.text-city{
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.text-country{
+  font-family: 'Lato', sans-serif;
+  color: #fff;
+  font-weight: 500;
+}
