@@ -1,5 +1,5 @@
 import React from "react";
-import CityCard from "./CityCard";
+import CarouselCard from "./CarouselCard";
 import "./CarouselSection.css";
 import Carousel from "nuka-carousel";
 
@@ -95,11 +95,11 @@ const CarouselSection = () => {
             <div className="car-slide">
               {slide.map((city) => {
                 return (
-                  <CityCard
+                  <CarouselCard
                     bgUrl={city.img}
                     cityName={city.name}
                     country={city.country}
-                  ></CityCard>
+                  ></CarouselCard>
                 );
               })}
             </div>

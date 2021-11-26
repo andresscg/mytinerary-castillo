@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import City from "../City";
-import "../../App.css";
+import CityCard from "../components/CityCard";
+import {Link} from 'react-router-dom'
+import "../App.css";
 
 const Cities = () => {
   useEffect(() => {
@@ -24,24 +25,17 @@ const Cities = () => {
         onChange={(event) => setFilter(event.target.value)}
       />
       <div className="cities-section">
-        {cities
-          .filter(
-            (city) =>
-              filter ===
-                city.name
-                  .toLowerCase()
-                  .split("")
-                  .slice(0, filter.length)
-                  .join("") || filter === ""
-          )
+        {cities.filter(city => city.name.toLowerCase().startsWith(filter.toLowerCase().replace(/\s/g, "")) || filter === '')
           .map((city) => {
             return cities.length > 0 ? (
-              <City
-                key={`${city._id}`}
-                name={city.name}
-                country={city.country}
-                img={city.img}
-              />
+              <Link to={`/cities/${city._id}`} className="card-link">
+                <CityCard
+                  key={`${city._id}`}
+                  name={city.name}
+                  country={city.country}
+                  img={city.img}
+                />
+              </Link>
             ) : (
               <h1>Ups! No cities were found by that name.</h1>
             );

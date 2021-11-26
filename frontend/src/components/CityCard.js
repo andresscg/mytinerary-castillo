@@ -1,17 +1,22 @@
-import React from 'react'
+import React from "react";
 import './CityCard.css'
 
 const CityCard = (props) => {
   return (
-    <div className="cardContainer" style={{backgroundImage: `url(${props.bgUrl})`}}>
-      <h3 className="cardText">
-        {props.cityName}
+    <div
+      className="cityContainer"
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url(${props.img})`,
+      }}
+    >
+      <h3 className="text-city">
+        {props.name}
       </h3>
-      <p className="cardSubtitle">
+      <h4 className="text-country">
         {props.country}
-      </p>
+      </h4>
     </div>
-  )
-}
+  );
+};
 
-export default CityCard
+export default CityCard;

@@ -1,7 +1,7 @@
-import '../../App.css'
-import Hero from '../Hero'
+import '../App.css'
+import Hero from '../components/Hero'
 import React from 'react'
-import CarouselSection from '../CarouselSection'
+import CarouselSection from '../components/CarouselSection'
 
 const Home = () => {
   return (
