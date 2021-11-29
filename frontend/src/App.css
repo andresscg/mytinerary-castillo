@@ -35,8 +35,17 @@
   gap: 10px;
 }
 
+.alert-cities{
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  font-size: 50px;
+  text-align: center;
+  color: #fff;
+}
+
 .card-link {
   text-decoration: none;
+  max-height: 300px;
 }
 
 .city-container {

@@ -9,6 +9,7 @@ const City = () => {
   const [city, setCity] = useState({});
   useEffect(() => {
     axios.get(endpoint).then((res) => setCity(res.data.response));
+    window.scrollTo(0, 0);
   }, []);
   return (
     <div className="city-container">

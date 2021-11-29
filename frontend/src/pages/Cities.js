@@ -7,11 +7,25 @@ const Cities = () => {
   useEffect(() => {
     fetch("http://localhost:4000/api/cities")
       .then((res) => res.json())
-      .then((data) => setCities(data.response.cities))
+      .then((data) => {
+        setCities(data.response)
+        setToFilter(data.response)
+      })
       .catch((err) => console.error(err));
+    window.scrollTo(0, 0)  
   }, []);
   const [cities, setCities] = useState([]);
   const [filter, setFilter] = useState("");
+  const [toFilter, setToFilter] = useState([]);
+  const handleChange = e =>{
+    setFilter(e.target.value);
+    filterCities(e.target.value);
+  }
+
+  const filterCities = (search) => {
+    let filteredCities = cities.filter(city =>city.name.toLowerCase().startsWith(search.toLowerCase().replace(/\s/g, "")) || search === '')
+    setToFilter(filteredCities);
+  }
 
   return (
     <div className="cities-container">
@@ -22,12 +36,12 @@ const Cities = () => {
         className="cities-input"
         name="filter"
         value={filter}
-        onChange={(event) => setFilter(event.target.value)}
+        onChange={(event) => handleChange(event)}
       />
       <div className="cities-section">
-        {cities.filter(city => city.name.toLowerCase().startsWith(filter.toLowerCase().replace(/\s/g, "")) || filter === '')
-          .map((city) => {
-            return cities.length > 0 ? (
+        {
+          toFilter.length > 0 ? toFilter.map((city) => {
+            return(
               <Link to={`/cities/${city._id}`} className="card-link">
                 <CityCard
                   key={`${city._id}`}
@@ -36,10 +50,9 @@ const Cities = () => {
                   img={city.img}
                 />
               </Link>
-            ) : (
-              <h1>Ups! No cities were found by that name.</h1>
-            );
-          })}
+            )}) : 
+              <h2 className="alert-cities">Ups! No cities were found.</h2>
+          }
       </div>
     </div>
   );
