@@ -27,7 +27,7 @@ const Cities = () => {
   }
 
   const filterCities = (search) => {
-    let filteredCities = cities.filter(city =>city.name.toLowerCase().startsWith(search.toLowerCase().replace(/\s/g, "")) || search === '')
+    let filteredCities = cities.filter(city =>city.name.toLowerCase().startsWith(search.toLowerCase().trim()) || search === '')
     setToFilter(filteredCities);
   }
 
