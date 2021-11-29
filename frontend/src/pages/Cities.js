@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import CityCard from "../components/CityCard";
 import {Link} from 'react-router-dom'
+import Loading from '../components/Loading'
+
 import "../App.css";
 
 const Cities = () => {
@@ -10,6 +12,7 @@ const Cities = () => {
       .then((data) => {
         setCities(data.response)
         setToFilter(data.response)
+        setLoading(false)
       })
       .catch((err) => console.error(err));
     window.scrollTo(0, 0)  
@@ -17,6 +20,7 @@ const Cities = () => {
   const [cities, setCities] = useState([]);
   const [filter, setFilter] = useState("");
   const [toFilter, setToFilter] = useState([]);
+  const [loading, setLoading] = useState(true);
   const handleChange = e =>{
     setFilter(e.target.value);
     filterCities(e.target.value);
@@ -27,7 +31,7 @@ const Cities = () => {
     setToFilter(filteredCities);
   }
 
-  return (
+  if(loading) return (<Loading />); else return (
     <div className="cities-container">
       <video src="/assets/bg-video2.mp4" autoPlay loop muted></video>
       <input
