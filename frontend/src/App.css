@@ -24,6 +24,12 @@
 
 .cities-input {
   padding: 10px 10%;
+  border-radius: 10px;
+}
+
+.cities-input::placeholder {
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
 }
 
 .cities-section {
