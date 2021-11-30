@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import useDropdownMenu from 'react-accessible-dropdown-menu-hook';
-import "./Navbar.css";  
+import "../styles/Navbar.css";  
 
 const Navbar = () => {
   //Handles navmenu on mobile devices

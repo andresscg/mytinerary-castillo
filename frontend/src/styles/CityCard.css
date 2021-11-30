@@ -10,6 +10,13 @@
   background-position: center;
   border-radius: 20px;
   border: 2px solid #fff;
+  filter: grayscale(100%);
+  transition: all 0.5s;
+}
+
+.cityContainer:hover {
+  filter: none;
+  transform: scale(1.1);
 }
 
 .text-city{

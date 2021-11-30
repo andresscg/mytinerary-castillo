@@ -1,5 +1,5 @@
 import React from 'react'
-import './Itinerary.css'
+import '../styles/Itinerary.css'
 
 const Itinerary = () => {
   return (

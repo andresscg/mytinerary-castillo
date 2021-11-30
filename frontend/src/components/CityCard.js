@@ -1,12 +1,12 @@
 import React from "react";
-import './CityCard.css'
+import '../styles/CityCard.css'
 
 const CityCard = (props) => {
   return (
     <div
       className="cityContainer"
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url(${props.img})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url(${props.img})`,
       }}
     >
       <h3 className="text-city">

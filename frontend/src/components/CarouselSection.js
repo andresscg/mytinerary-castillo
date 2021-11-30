@@ -1,6 +1,6 @@
 import React from "react";
 import CarouselCard from "./CarouselCard";
-import "./CarouselSection.css";
+import "../styles/CarouselSection.css";
 import Carousel from "nuka-carousel";
 
 const cities = [

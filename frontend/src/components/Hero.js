@@ -1,6 +1,6 @@
 import React from 'react'
 import '../App.css'
-import './Hero.css'
+import '../styles/Hero.css'
 import Button from './Button'
 
 
