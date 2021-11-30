@@ -81,6 +81,27 @@
   color: #fff;
 }
 
+.itineraries-section {
+  width: 100%;
+  padding: 4rem 2rem;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/1230302/pexels-photo-1230302.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.itineraries-section--title {
+  font-family: 'Lato', sans-serif;
+  color: #fff;
+  padding-bottom: 15px;
+  font-size: 30px;
+}
+
 .alert {
   font-family: 'Montserrat', sans-serif;
   color: #fff;

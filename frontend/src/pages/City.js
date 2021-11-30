@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Button from "../components/Button";
+import Itinerary from '../components/Itinerary'
+
 
 const City = () => {
   const location = useLocation();
@@ -22,8 +24,13 @@ const City = () => {
         <h1 className="city-name">{city.name}</h1>
         <h2 className="city-country">{city.country}</h2>
       </div>
-      <h2 className="alert">Under construction, come back later!</h2>
-      <Button path="/cities">Back to cities</Button>
+      <div className="itineraries-section">
+        <h2 className="itineraries-section--title">
+          All Itineraries
+        </h2>
+        <Itinerary />
+        <Button path="/cities">Back to cities</Button>
+      </div>
     </div>
   );
 };

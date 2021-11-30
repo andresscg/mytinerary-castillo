@@ -1,0 +1,1 @@
+const Itinerary = require('../models/Itinerary');
