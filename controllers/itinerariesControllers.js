@@ -39,6 +39,27 @@ const itinerariesControllers = {
       console.error(err);
     }  
     res.json({success:true});
+  },
+  getItinerariesByCity: async(req, res) => {
+    const id = req.params.id;
+    let itineraries;
+    try {
+      itineraries = await Itinerary.find({city:id})
+    }catch(err){
+      console.error(err);
+    }
+    res.json({response:itineraries, success:true});
+  },
+  modifyItinerary: async(req, res) => {
+    const id = req.params.id;
+    const value = req.body
+    let itinerary;
+    try{
+      itinerary = await Itinerary.findByIdAndUpdate(id, value, {new:true})
+    }catch(err){
+      console.error(err);
+    }
+    res.json({response: itinerary, success:true});
   }
 }
 

@@ -1,37 +1,47 @@
 import React, { useEffect, useState } from "react";
 import CityCard from "../components/CityCard";
-import {Link} from 'react-router-dom'
-import Loading from '../components/Loading'
-
+import { Link } from "react-router-dom";
+import Loading from "../components/Loading";
+import { connect } from "react-redux";
 import "../App.css";
+import citiesActions from "../redux/actions/citiesActions";
 
-const Cities = () => {
-  useEffect(() => {
-    fetch("http://localhost:4000/api/cities")
-      .then((res) => res.json())
-      .then((data) => {
-        setCities(data.response)
-        setToFilter(data.response)
-        setLoading(false)
-      })
-      .catch((err) => console.error(err));
-    window.scrollTo(0, 0)  
-  }, []);
-  const [cities, setCities] = useState([]);
-  const [filter, setFilter] = useState("");
-  const [toFilter, setToFilter] = useState([]);
+const Cities = (props) => {
   const [loading, setLoading] = useState(true);
-  const handleChange = e =>{
-    setFilter(e.target.value);
-    filterCities(e.target.value);
-  }
+  useEffect(() => {
+    window.scroll(0, 0);
+    const getAllCities = async () => {
+      try {
+        await props.getAllCities();
+        setLoading(false);
+      } catch (err) {
+        props.history.push("/error");
+      }
+    };
+    getAllCities();
+  }, []);
 
-  const filterCities = (search) => {
-    let filteredCities = cities.filter(city =>city.name.toLowerCase().startsWith(search.toLowerCase().trim()) || search === '')
-    setToFilter(filteredCities);
-  }
+  const handleChange = (e) => {
+    props.filterCities(e.target.value);
+  };
 
-  if(loading) return (<Loading />); else return (
+  if (loading) return <Loading />;
+  const toShow =
+    props.cities.length === 0 ? (
+      <h2 className="alert-cities">Ups! No cities were found.</h2>
+    ) : (
+      props.cities.map((city) => (
+        <Link to={`/cities/${city._id}`} className="card-link">
+          <CityCard
+            key={`${city._id}`}
+            name={city.name}
+            country={city.country}
+            img={city.img}
+          />
+        </Link>
+      ))
+    );
+  return (
     <div className="cities-container">
       <video src="/assets/bg-video2.mp4" autoPlay loop muted></video>
       <input
@@ -39,27 +49,24 @@ const Cities = () => {
         placeholder="Search for a city "
         className="cities-input"
         name="filter"
-        value={filter}
-        onChange={(event) => handleChange(event)}
+        onChange={handleChange}
       />
       <div className="cities-section">
-        {
-          toFilter.length > 0 ? toFilter.map((city) => {
-            return(
-              <Link to={`/cities/${city._id}`} className="card-link">
-                <CityCard
-                  key={`${city._id}`}
-                  name={city.name}
-                  country={city.country}
-                  img={city.img}
-                />
-              </Link>
-            )}) : 
-              <h2 className="alert-cities">Ups! No cities were found.</h2>
-          }
+        {toShow}
       </div>
     </div>
   );
 };
 
-export default Cities;
+const mapStateToProps = (state) => {
+  return{
+    cities: state.cities.filteredCities
+  }  
+}
+
+const mapDispatchToProps = {
+  getAllCities: citiesActions.getCities,
+  filterCities: citiesActions.filterCities
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cities);

@@ -2,31 +2,32 @@ import React from 'react'
 import '../styles/Itinerary.css'
 
 
-const Itinerary = () => {
+const Itinerary = (props) => {
+  let dollar = []
   return (
     <section className="itinerary-card">
       <div className="itinerary-container">
         <div className="author-info">
-          <img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" alt="User" className="author-picture" />
-          <p className="author-name">Andres Castillo</p>
+          <img src={props.authImg} alt="User" className="author-picture" />
+          <p className="author-name">{props.authName}</p>
         </div>
-        <div className="itinerary-info">
+        <div className="itinerary-info" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url(${props.img})`}}>
           <h2 className="itinerary-title">
-            Night in Bogotá
+            {props.title}
           </h2>
           <div className="itinerary-stats">
             <p className="itinerary-price">
-              Price: 💵💵💵
+              Price: {dollar.fill('💲', 0, (props.price-1)).map(e => {return e})}
             </p>
             <p className="itinerary-duration">
-              Duration: 🕓🕓🕓🕓🕓
+              Duration: {props.duration} hours
             </p>
           </div>
-          <i className="far fa-heart itinerary-likes"><span className="amount-likes">0</span></i>
+          <i className="far fa-heart itinerary-likes"><span className="amount-likes">{props.likes}</span></i>
           <ul className="itinerary-hashtags">
-            <li>#Night</li>
-            <li>#City</li>
-            <li>#Drinks</li>
+            {props.hashtags.map(hashtag => {
+              return <li>#{hashtag}</li>
+            })}
           </ul>
         </div>
       </div>

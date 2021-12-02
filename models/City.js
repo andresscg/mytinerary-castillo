@@ -4,7 +4,6 @@ const citySchema = new mongoose.Schema({
   name: {type:String, required:true},
   country: {type:String, required:true},
   img: {type:String, required:true},
-  itineraries: [{type: mongoose.Types.ObjectId, ref:"Itinerary", required:true}]
 });
 
 const City = mongoose.model('city', citySchema);
