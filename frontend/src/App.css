@@ -1,9 +1,11 @@
+/* RESETS */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* CITIES PAGE */
 .cities-container {
   display: flex;
   flex-direction: column;
@@ -54,6 +56,7 @@
   max-height: 300px;
 }
 
+/* CITY PAGE */
 .city-container {
   min-height: 100vh;
   width: 100%;
@@ -100,16 +103,35 @@
   color: #fff;
   padding-bottom: 15px;
   font-size: 30px;
+  text-align: center;
 }
 
-.alert {
-  font-family: 'Montserrat', sans-serif;
+.no-itineraries {
+  background-color: #242424;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5% 10%;
+  gap: 15px;
+  border: 2px solid #fff;
+  border-radius: 15px;
+}
+
+.no-itineraries__text, .sad-face{
   color: #fff;
-  font-weight: 500;
-  font-size: 30px;
-  padding: 50px 0;
+  font-size: 2rem;
 }
 
+.no-itineraries__text{
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+
+.sad-face {
+  font-size: 5rem;
+}
+
+/* MEDIA QUERIES */
 @media screen and (max-width: 768px) {
   .cities-section{
     grid-template-columns: 1fr;

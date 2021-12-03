@@ -8,6 +8,28 @@
   -webkit-backdrop-filter: blur(8px);
 }
 
+.itinerary-activities{
+  height: 0px;
+  background-color: #242424;
+  transition: all .3s ease-in-out;
+}
+
+.activities-display {
+  height: 20vh;
+  background-color: #242424;
+  transition: all .3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.under-construction {
+  font-family: 'Lato', sans-serif;
+  color: #fff;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
 .view-more {
   width: 100%;
   background-color: #242424;

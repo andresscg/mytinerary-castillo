@@ -12,6 +12,10 @@ const City = (props) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     window.scroll(0, 0);
+    if(!props.cities.length){
+      props.history.push('/cities');
+      return false;
+    }
     const getCityAndItineraries = async() => {
       try{
         await props.getOneCity(props.match.params.id)
@@ -23,6 +27,17 @@ const City = (props) => {
     }
     getCityAndItineraries()
   }, []);
+
+  const toShow = props.itineraries.length === 0
+  ? <div className="no-itineraries">
+      <h3 className="no-itineraries__text">Ups! We don't have any itineraries for this city yet.</h3>
+      <i className="fas fa-sad-tear sad-face"></i>
+    </div>
+  : props.itineraries.map(itinerary => {
+    return(
+      <Itinerary data={itinerary} key={itinerary._id}/>
+    )
+  })
 
   if(loading){
     return (<Loading/>)
@@ -40,13 +55,9 @@ const City = (props) => {
       </div>
       <div className="itineraries-section">
         <h2 className="itineraries-section--title">
-          All Itineraries
+          Look for your next adventure!
         </h2>
-        {props.itineraries.map(itinerary => {
-          return(
-            <Itinerary authImg={itinerary.author.imgUrl} authName={itinerary.author.name} title={itinerary.title} img={itinerary.img} price={itinerary.price} duration={itinerary.duration} likes={itinerary.likes} hashtags={itinerary.hashtags}/>
-          )
-        })}
+        {toShow}
         <Button path="/cities">Back to cities</Button>
       </div>
     </div>

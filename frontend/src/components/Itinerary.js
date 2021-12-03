@@ -1,38 +1,44 @@
-import React from 'react'
+import React, {useState} from 'react'
 import '../styles/Itinerary.css'
 
 
 const Itinerary = (props) => {
-  let dollar = []
+  let dollar = ['','','','','']
+  const {author, title, duration, price, _id, img, likes, hashtags} = props.data;
+  const [isOpen, setOpen] = useState(false);
+  const handleClick =  () => setOpen(!isOpen);
   return (
     <section className="itinerary-card">
       <div className="itinerary-container">
         <div className="author-info">
-          <img src={props.authImg} alt="User" className="author-picture" />
-          <p className="author-name">{props.authName}</p>
+          <img src={author.imgUrl} alt="User" className="author-picture" />
+          <p className="author-name">{author.name}</p>
         </div>
-        <div className="itinerary-info" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url(${props.img})`}}>
+        <div className="itinerary-info" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url(${img})`}}>
           <h2 className="itinerary-title">
-            {props.title}
+            {title}
           </h2>
           <div className="itinerary-stats">
             <p className="itinerary-price">
-              Price: {dollar.fill('💲', 0, (props.price-1)).map(e => {return e})}
+              Price: {dollar.fill('💲', 0, (price)).map(e => {return e})}
             </p>
             <p className="itinerary-duration">
-              Duration: {props.duration} hours
+              Duration: {duration} hours
             </p>
           </div>
-          <i className="far fa-heart itinerary-likes"><span className="amount-likes">{props.likes}</span></i>
+          <i className="far fa-heart itinerary-likes"><span className="amount-likes">{likes}</span></i>
           <ul className="itinerary-hashtags">
-            {props.hashtags.map(hashtag => {
-              return <li>#{hashtag}</li>
+            {hashtags.map((hashtag, i) => {
+              return <li key={i}>#{hashtag}</li>
             })}
           </ul>
         </div>
       </div>
-      <button className="view-more">
-        View More <i className="fas fa-angle-down"></i>
+      <div className={isOpen ? 'activities-display' : 'itinerary-activities'}>
+        <h3 className="under-construction" style={{display: isOpen ? 'block' : 'none'}}>Under Construction!</h3>
+      </div>
+      <button className="view-more" onClick={handleClick}>
+        View More <i className={isOpen ? "fas fa-angle-up" : "fas fa-angle-down"}></i>
       </button>
     </section>
   )
