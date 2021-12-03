@@ -3,7 +3,7 @@ import axios from 'axios';
 const itinerariesActions = {
   getItinerariesByCity: (id) => {
     return async(dispatch, getState) => {
-      let response = await axios.get(`http://localhost:4000/api/itineraries/${id}`)
+      let response = await axios.get(`http://localhost:4000/api/itineraries/cities/${id}`)
       if(!response.data.success){
         throw new Error('Error connecting database')
       }

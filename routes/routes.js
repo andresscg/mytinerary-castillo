@@ -8,7 +8,8 @@ const {getItineraries, addItinerary, getOneItinerary, deleteItinerary, getItiner
 Router.route("/cities").get(getCities).post(addCity);
 Router.route("/itineraries").get(getItineraries).post(addItinerary);
 
-Router.route("/cities/:id").get(getOneCity).delete(deleteCity).patch(modifyCity).get(getItinerariesByCity);
-Router.route("/itineraries/:id").get(getItinerariesByCity).delete(deleteItinerary).patch(modifyItinerary);
+Router.route("/cities/:id").get(getOneCity).delete(deleteCity).patch(modifyCity);
+Router.route("/itineraries/:id").get(getOneItinerary).delete(deleteItinerary).patch(modifyItinerary);
 
+Router.route("/itineraries/cities/:id").get(getItinerariesByCity)
 module.exports = Router;
