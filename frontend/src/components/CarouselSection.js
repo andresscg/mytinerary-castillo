@@ -90,15 +90,16 @@ const CarouselSection = () => {
         cellAlign="center"
         // cellSpacing={0}
       >
-        {cities.map((slide) => {
+        {cities.map((slide, index) => {
           return (
-            <div className="car-slide">
-              {slide.map((city) => {
+            <div className="car-slide" key={index}>
+              {slide.map((city, index) => {
                 return (
                   <CarouselCard
                     bgUrl={city.img}
                     cityName={city.name}
                     country={city.country}
+                    key={index}
                   ></CarouselCard>
                 );
               })}

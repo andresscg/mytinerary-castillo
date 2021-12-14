@@ -22,13 +22,17 @@ const City = (props) => {
     try{
       dispatch(citiesActions.getOneCity(props.match.params.id))
       dispatch(itinerariesActions.getItinerariesByCity(props.match.params.id))
-      setLoading(false)
+      setLoading(false);
     }catch(err){
       props.history.push('/error')
       console.log(err)
     }
-  }, []);
+  }, [cities.length, props.history, props.match.params.id, dispatch]);
 
+  if(loading){
+    return (<Loading/>)
+  }
+  
   const toShow = itineraries.length === 0
   ? <div className="no-itineraries">
       <h3 className="no-itineraries__text">Ups! We don't have any itineraries for this city yet.</h3>
@@ -40,9 +44,6 @@ const City = (props) => {
     )
   })
 
-  if(loading){
-    return (<Loading/>)
-  }
   return (
     <div className="city-container">
       <div

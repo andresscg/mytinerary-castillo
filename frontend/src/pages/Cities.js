@@ -22,7 +22,7 @@ const Cities = (props) => {
     }
     // };
     // getAllCities();
-  }, []);
+  }, [dispatch, props.history]);
 
   const handleChange = (e) => {
     dispatch(citiesActions.filterCities(e.target.value));
@@ -34,9 +34,8 @@ const Cities = (props) => {
       <h2 className="alert-cities">Ups! No cities were found.</h2>
     ) : (
       cities.map((city) => (
-        <Link to={`/cities/${city._id}`} className="card-link">
+        <Link to={`/cities/${city._id}`} className="card-link" key={`${city._id}`}>
           <CityCard
-            key={`${city._id}`}
             name={city.name}
             country={city.country}
             img={city.img}

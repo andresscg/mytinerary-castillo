@@ -8,7 +8,7 @@ const Itinerary = (props) => {
   const [isOpen, setOpen] = useState(false);
   const handleClick =  () => setOpen(!isOpen);
   return (
-    <section className="itinerary-card">
+    <section className="itinerary-card" key={_id}>
       <div className="itinerary-container">
         <div className="author-info">
           <img src={author.imgUrl} alt="User" className="author-picture" />

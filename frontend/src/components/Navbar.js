@@ -1,16 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import useDropdownMenu from 'react-accessible-dropdown-menu-hook';
-import "../styles/Navbar.css";  
+import useDropdownMenu from "react-accessible-dropdown-menu-hook";
+import "../styles/Navbar.css";
+import usersActions from "../redux/actions/usersActions";
 
-const Navbar = () => {
+const Navbar = (props) => {
   //Handles navmenu on mobile devices
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const closeMenu = () => setClick(false);
 
+  const [isLogged, setLogged] = useState(false);
+  const dispatch = useDispatch();
+  const { token, firstName, photoUrl } = useSelector((state) => state.users);
+
   //Handles dropdown menu
-  const { buttonProps, itemProps, isOpen } = useDropdownMenu(2);
+  const { buttonProps, itemProps, isOpen } = useDropdownMenu(1);
+
+  const toShow = isLogged ? (
+    <li className="nav-item dropdown">
+      <button className="nav-links" {...buttonProps}>
+        <div
+          className="user-photo"
+          style={{ backgroundImage: `url(${photoUrl})` }}
+        ></div>
+        <i className="fas fa-angle-down"></i>
+      </button>
+      <div className={isOpen ? "visible" : ""} role="menu">
+        <p
+          className="drop-link"
+          onClick={() => {
+            dispatch(usersActions.signOut());
+            setLogged(false);
+          }}
+        >
+          Sign Out
+        </p>
+      </div>
+    </li>
+  ) : (
+    <li className="nav-item">
+      <i className="fas fa-user-circle user nav-links-icon"></i>
+    </li>
+  );
+
+  useEffect(() => {
+    if (token) {
+      setLogged(true);
+    }
+  });
+
   return (
     <>
       <nav className="navbar">
@@ -32,16 +72,19 @@ const Navbar = () => {
                 Cities
               </Link>
             </li>
-            <li className="nav-item dropdown">
-              <button className="nav-links" {...buttonProps}>
-                <i className="fas fa-user-circle user"></i>
-                <i className="fas fa-angle-down"></i>
-              </button>
-              <div className={isOpen ? 'visible' : ''} role='menu'>
-                <Link {...itemProps[0]} to='/login' className="drop-link">Log In</Link>
-                <Link {...itemProps[1]} to='signup' className="drop-link">Sign Up</Link>
-              </div>
-            </li>
+            {isLogged && (
+              <li className="nav-item">
+                <p className="user-name">Welcome, {firstName}</p>
+              </li>
+            )}
+            {!isLogged && (
+              <li className="nav-item">
+                <Link to="/sign" className="nav-links">
+                  Sign In/Up
+                </Link>
+              </li>
+            )}
+            {toShow}
           </ul>
         </div>
       </nav>

@@ -1,16 +1,23 @@
 import "./App.css";
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import Navbar from "./components/Navbar";
-import { BrowserRouter , Switch, Route } from "react-router-dom";
+import { BrowserRouter , Switch, Route, Redirect } from "react-router-dom";
 import Home from "./pages/Home";
+import Sign from "./pages/Sign";
 import Cities from "./pages/Cities";
-import City from './pages/City'
-import LogIn from './pages/LogIn'
-import SignUp from './pages/SignUp'
+import City from "./pages/City";
 import Footer from './components/Footer'
-
+import usersActions from './redux/actions/usersActions'
+import {useEffect} from "react"
+import {useDispatch} from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if(localStorage.getItem('token')){
+      dispatch(usersActions.signInLocalStorage(localStorage.getItem('token')));
+    }  
+  })
   return (
     <BrowserRouter>
       <Navbar />
@@ -18,9 +25,9 @@ function App() {
         <Route path="/" exact component={Home} />
         <Route path="/cities/:id" component={City} />
         <Route path="/cities" exact component={Cities}/>
-        <Route path="/login" exact component={LogIn}></Route>
-        <Route path="/signup" exact component={SignUp}></Route>
+        <Route path="/sign" exact component={Sign}></Route>
       </Switch>
+      <Redirect to="/" />
       <Footer/>
     </BrowserRouter>
   );
