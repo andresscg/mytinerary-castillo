@@ -9,7 +9,7 @@ const validator = (req, res, next) => {
     }),
     lastName: joi.string().trim().min(2).pattern(new RegExp('[a-zA-Z]')).required().messages({
       'string.empty': 'This field is required',
-      'string.min': 'Invalid name, must be at least 2 characters',
+      'string.min': 'Invalid last name, must be at least 2 characters',
       'string.pattern.base': 'Name must only have letters'
     }),
     email: joi.string().trim().email().required().messages({

@@ -9,6 +9,7 @@ import City from "./pages/City";
 import Footer from './components/Footer'
 import usersActions from './redux/actions/usersActions'
 import {useEffect} from "react"
+import {ToastContainer} from 'react-toastify'
 import {useDispatch} from "react-redux";
 
 function App() {
@@ -29,6 +30,18 @@ function App() {
       </Switch>
       <Redirect to="/" />
       <Footer/>
+      <ToastContainer
+        position="bottom-rigth"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        limit={5}
+      />
     </BrowserRouter>
   );
 }

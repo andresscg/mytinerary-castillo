@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
 import "../styles/SignForm.css";
-import {ToastContainer} from 'react-toastify'
 
 const Sign = (props) => {
   const token = useSelector((state) => state.users.token);
@@ -60,18 +59,6 @@ const Sign = (props) => {
           <img src="assets/register.svg" className="image" alt="" />
         </div>
       </div>
-      <ToastContainer
-        position="bottom-rigth"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        limit={5}
-      />
     </div>
   );
 };

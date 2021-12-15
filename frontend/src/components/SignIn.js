@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import usersActions from "../redux/actions/usersActions";
 import { GoogleLogin } from "react-google-login";
 import "../styles/SignForm.css";
-import {toast} from "react-toastify"
+import { toast } from "react-toastify";
 
 const SignForm = (props) => {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const SignForm = (props) => {
   const formHandler = async (e) => {
     e && e.preventDefault();
     if (signUser.email === "" || signUser.password === "") {
-      toast.error('Ups! All fields are required', {
+      toast.error("Ups! All fields are required", {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -25,39 +25,42 @@ const SignForm = (props) => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        });
-    }
-    try {
-      let response = await dispatch(usersActions.signIn(signUser));
-      if (!response.data.success) {
-        toast.warn('Problem signing in, maybe your email or password are incorrect!', {
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
+      });
+    } else {
+      try {
+        let response = await dispatch(usersActions.signIn(signUser));
+        if (!response.data.success) {
+          toast.warn(
+            "Problem signing in, maybe your email or password are incorrect!",
+            {
+              position: "bottom-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            }
+          );
+        } else {
+          toast.success("Signed in successfully, welcome back!", {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
           });
-      } else {
-        toast.success('Signed in successfully, welcome back!', {
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          })
+        }
+      } catch (err) {
+        console.error(err);
+        return false;
       }
-    } catch (err) {
-      console.error(err);
-      return false;
     }
   };
 
   const responseGoogle = async (res) => {
-    console.log(res);
     let logInGoogle = {
       email: res.profileObj.email,
       password: res.profileObj.googleId,
@@ -65,9 +68,8 @@ const SignForm = (props) => {
     };
     try {
       let response = await dispatch(usersActions.signIn(logInGoogle));
-      console.log(response);
       if (!response.data.success) {
-        toast.warn('Problem signing in!', {
+        toast.warn("Problem signing in!", {
           position: "bottom-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -75,9 +77,9 @@ const SignForm = (props) => {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          })
+        });
       } else {
-        toast.success('Signed in successfully, welcome back!', {
+        toast.success("Signed in successfully, welcome back!", {
           position: "bottom-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -85,7 +87,7 @@ const SignForm = (props) => {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          })
+        });
       }
     } catch (error) {
       return false;

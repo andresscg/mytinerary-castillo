@@ -16,7 +16,7 @@ const Navbar = (props) => {
   const { token, firstName, photoUrl } = useSelector((state) => state.users);
 
   //Handles dropdown menu
-  const { buttonProps, itemProps, isOpen } = useDropdownMenu(1);
+  const { buttonProps, isOpen } = useDropdownMenu(1);
 
   const toShow = isLogged ? (
     <li className="nav-item dropdown">
@@ -49,7 +49,7 @@ const Navbar = (props) => {
     if (token) {
       setLogged(true);
     }
-  });
+  },[token]);
 
   return (
     <>

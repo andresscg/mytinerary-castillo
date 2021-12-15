@@ -47,9 +47,16 @@ const SignUp = (props) => {
     } else {
       try {
         let response = await dispatch(usersActions.signUp(newUser));
-        console.log(response.data);
         if (response.data.success) {
-          window.alert("Logeado");
+          toast.success('Signed in successfully, welcome back!', {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            })
         } else if (response.data.errors) {
           let errors = response.data.errors;
           errors.map((err) => toast.error(err.message, {
@@ -61,6 +68,16 @@ const SignUp = (props) => {
             draggable: true,
             progress: undefined,
             }));
+        } else {
+          toast.error(response.data.error, {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
         }
       } catch (err) {
         console.error(err);
@@ -70,7 +87,6 @@ const SignUp = (props) => {
   };
 
   const responseGoogle = async (res) => {
-    console.log(res);
     let googleUser = {
       firstName: res.profileObj.givenName,
       lastName: res.profileObj.familyName,
