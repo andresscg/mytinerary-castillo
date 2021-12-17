@@ -79,7 +79,7 @@ const Navbar = (props) => {
             )}
             {!isLogged && (
               <li className="nav-item">
-                <Link to="/sign" className="nav-links">
+                <Link to="/sign" className="nav-links" onClick={closeMenu}>
                   Sign In/Up
                 </Link>
               </li>

@@ -35,7 +35,8 @@ const Itinerary = (props) => {
         </div>
       </div>
       <div className={isOpen ? 'activities-display' : 'itinerary-activities'}>
-        <h3 className="under-construction" style={{display: isOpen ? 'block' : 'none'}}>Under Construction!</h3>
+        <h3 className="activities-title" style={{display: isOpen ? 'block' : 'none'}}>Activities</h3>
+        
       </div>
       <button className="view-more" onClick={handleClick}>
         View More <i className={isOpen ? "fas fa-angle-up" : "fas fa-angle-down"}></i>
