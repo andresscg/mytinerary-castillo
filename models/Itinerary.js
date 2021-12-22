@@ -9,7 +9,7 @@ const itinerarySchema = new mongoose.Schema({
     imgUrl: {type:String, required:true}
   },
   img: {type:String, required:true},
-  likes: [{type:mongoose.Types.ObjectId, ref:"User"}],
+  likes: [{type:Array}],
   comments: [{
     comment: {type:String},
     user: {type: mongoose.Types.ObjectId, ref:"User"}

@@ -26,7 +26,7 @@ const City = (props) => {
     }catch(err){
       props.history.push('/error')
     }
-  }, [cities.length, props.history, props.match.params.id, dispatch]);
+  }, []);
 
   if(loading){
     return (<Loading/>)

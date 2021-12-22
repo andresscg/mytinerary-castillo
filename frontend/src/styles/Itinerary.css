@@ -15,12 +15,27 @@
 }
 
 .activities-display {
-  height: 20vh;
+  height: 60vh;
   background-color: #242424;
   transition: all .3s ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.activities-section {
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+.activities-carousel {
+  width: 50%;
 }
 
 .activities-title {
@@ -28,6 +43,12 @@
   color: #fff;
   font-size: 1.5rem;
   text-transform: uppercase;
+}
+
+.comments{
+  height: 300px;
+  width: 50%;
+  background-color: #fff;
 }
 
 .view-more {
@@ -105,6 +126,8 @@
 .itinerary-likes {
   color: hsl(0, 82%, 50%);
   font-size: 2em;
+  background: none;
+  border: none;
 }
 
 .amount-likes {

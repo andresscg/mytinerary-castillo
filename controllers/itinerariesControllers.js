@@ -63,20 +63,20 @@ const itinerariesControllers = {
   },
   likeItinerary: (req, res) => {
     Itinerary.findOne({ _id: req.params.id }).then((itinerary) => {
-      if (itinerary.likes.includes(req.user.id)) {
+      if (itinerary.likes.includes(req.user._id)) {
         Itinerary.findOneAndUpdate(
           { _id: req.params.id },
-          { $pull: { likes: req.user.id } },
+          { $pull: { likes: req.user._id } },
           { new: true }
-        ).then((newItinerary) =>
+          ).then((newItinerary) =>
           res.json({ response: newItinerary.likes, success: true })
         ).catch(err => console.log(err));
       }else{
-        Itinerary.findOneAndUpdate({_id: req.params.id}, {$push:{likes:req.user.id}},{new:true})
+        Itinerary.findOneAndUpdate({_id: req.params.id}, {$push:{likes:req.user._id}},{new:true})
         .then(newItinerary => res.json({ response: newItinerary.likes, success:true}))
         .catch(err => console.log(err));
       }
-    }).catch(err => res.json({ response: err, success: false}));
+    }).catch(err => res.json({ response: req.params.id, success: false}));
   },
 };
 
