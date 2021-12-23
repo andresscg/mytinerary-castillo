@@ -4,10 +4,9 @@ import '../styles/Activities.css'
 
 const Activities = (props) => {
   return (
-    <div>
+    <div className="container-activities">
       <Carousel
-        autoplay={true}
-        autoplayInterval={5000}
+        autoplay={false}
         wrapAround={false}
         animation="zoom"
         cellAlign="center"

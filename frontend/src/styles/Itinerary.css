@@ -15,7 +15,7 @@
 }
 
 .activities-display {
-  height: 60vh;
+  height: 70vh;
   background-color: #242424;
   transition: all .3s ease-in-out;
   display: flex;
@@ -32,10 +32,15 @@
   justify-content: center;
   align-items: center;
   gap: 25px;
+  height: 80%;
 }
 
 .activities-carousel {
   width: 50%;
+  background-color: #a72626;
+  padding: 10px 0;
+  border: 3px solid #fff;
+  border-radius: 10px
 }
 
 .activities-title {
@@ -192,4 +197,13 @@
     max-height: 100%;
     max-width: 50%;
   }
+  .activities-section {
+    flex-direction: column;
+  }
+  .activities-display {
+    min-height: 140vh;
+  }
+  .activities-carousel{
+    width: 100%;
+  } 
 }

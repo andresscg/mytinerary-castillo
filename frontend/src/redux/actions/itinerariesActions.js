@@ -33,6 +33,51 @@ const itinerariesActions = {
       }
     };
   },
+  addComment: (id, comment, token) => {
+    return async () => {
+      try{
+        let response = await axios.put(`http://localhost:4000/api/itinerary/comments/${id}`, {comment, type:"addComment"}, {
+          headers: {
+            Authorization: "Bearer " + token
+          }
+        })
+        return response.data.response;
+      }catch(err){
+        console.log(err);
+      }
+    }
+  },
+  editComment: (id, comment, token) => {
+    return async () => {
+      try{
+        let response = await axios.put(`http://localhost:4000/api/itinerary/comments/${id}`, {comment, type:"editComment"}, {
+          headers: {
+            Authorization: "Bearer " + token
+          }
+        })
+        if(response.data.success) return {success:true, res:response.data.response}
+      }catch(err) {
+        console.log(err);
+      }
+    }
+  },
+  deleteComment: (id, commentId, token) => {
+    return async () => {
+      let response;
+      try{
+        response = await axios.put(`http://localhost:4000/api/itinerary/comments/${id}`, {commentId, type:"deleteComment"},{
+          headers: {
+            Authorization: "Bearer " + token
+          }
+        })
+        if(response.data.success){
+          return response.data
+        }
+      }catch(err) {
+        console.log(err)
+      }
+    }
+  },
   getActivitiesItinerary: (id) => {
     return async () => {
       try {

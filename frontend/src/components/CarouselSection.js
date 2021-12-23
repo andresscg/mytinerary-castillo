@@ -84,11 +84,11 @@ const CarouselSection = () => {
       <Carousel
         className="carousel"
         autoplay={true}
-        autplayInterval={500}
+        autplayInterval={2000}
         wrapAround={true}
-        // animation="zoom"
+        animation="zoom"
         cellAlign="center"
-        // cellSpacing={0}
+        slidesToShow={1}
       >
         {cities.map((slide, index) => {
           return (

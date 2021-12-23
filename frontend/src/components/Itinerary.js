@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/Itinerary.css";
 import Activities from "./Activities";
+import Comments from "./Comments";
 import { useDispatch, useSelector } from "react-redux";
 import itinerariesActions from "../redux/actions/itinerariesActions";
 import { toast } from "react-toastify";
@@ -10,14 +11,11 @@ const Itinerary = (props) => {
   const id = useSelector((state) => state.users._id);
   const token = useSelector((state) => state.users.token);
   let dollar = ["", "", "", "", ""];
-  const { author, title, duration, price, _id, img, likes, hashtags } =
+  const { author, title, duration, price, _id, img, likes, hashtags, comments } =
     props.data;
   const [isOpen, setOpen] = useState(false);
-  const [like, setLike] = useState(true);
   const [itineraryLikes, setItineraryLikes] = useState(likes);
   const [activities, setActivities] = useState([]);
-
-  const liked = itineraryLikes.includes(id) ? <p>lleno</p> : <p>vacio</p>;
 
   const getActivitiesItinerary = async () => {
     try {
@@ -31,7 +29,6 @@ const Itinerary = (props) => {
   };
 
   const likeItinerary = async () => {
-    setLike(false);
     if (!token) {
       toast.error("Ups! You must be signed in to like this itinerary", {
         position: "bottom-right",
@@ -45,11 +42,11 @@ const Itinerary = (props) => {
     } else {
       let response = await dispatch(
         itinerariesActions.likeItinerary(_id, token)
-        );
-        setItineraryLikes(response.data.response);
-      }
-      setLike(true);
+      );
+      setItineraryLikes(response.data.response);
+    }
   };
+
 
   const handleClick = () => {
     setOpen(!isOpen);
@@ -84,9 +81,9 @@ const Itinerary = (props) => {
             <button
               className="itinerary-likes"
               style={{ cursor: "pointer" }}
-              onClick={(like ? likeItinerary : null)}
+              onClick={likeItinerary}
             >
-              {liked}
+              {itineraryLikes.includes(id) ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i>}
             </button>
             <span className="amount-likes itinerary-likes">
               {itineraryLikes.length}
@@ -113,7 +110,7 @@ const Itinerary = (props) => {
           <div className="activities-carousel">
             <Activities activities={activities}></Activities>
           </div>
-          <div className="comments"></div>
+          <Comments itineraryId={_id} itineraryComments={comments} />
         </div>
       </div>
       <button className="view-more" onClick={handleClick}>
