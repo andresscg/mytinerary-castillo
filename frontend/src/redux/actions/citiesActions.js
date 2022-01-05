@@ -3,7 +3,7 @@ import axios from 'axios';
 const citiesActions = {
   getCities: () => {
     return async (dispatch, getState) => {
-      let response = await axios.get('http://localhost:4000/api/cities');
+      let response = await axios.get('https://mytinerary-castillo.herokuapp.com/api/cities');
       if(!response.data.success) {
         throw new Error('Error connecting database');
       }

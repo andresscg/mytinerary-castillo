@@ -4,7 +4,7 @@ const itinerariesActions = {
   getItinerariesByCity: (id) => {
     return async (dispatch, getState) => {
       let response = await axios.get(
-        `http://localhost:4000/api/itineraries/cities/${id}`
+        `https://mytinerary-castillo.herokuapp.com/api/itineraries/cities/${id}`
       );
       if (!response.data.success) {
         throw new Error("Error connecting database");
@@ -19,7 +19,7 @@ const itinerariesActions = {
     return async () => {
       try {
         let response = await axios.put(
-          `http://localhost:4000/api/itinerary/like/${id}`,
+          `https://mytinerary-castillo.herokuapp.com/api/itinerary/like/${id}`,
           { withCredentials: true },
           {
             headers: {
@@ -36,7 +36,7 @@ const itinerariesActions = {
   addComment: (id, comment, token) => {
     return async () => {
       try{
-        let response = await axios.put(`http://localhost:4000/api/itinerary/comments/${id}`, {comment, type:"addComment"}, {
+        let response = await axios.put(`https://mytinerary-castillo.herokuapp.com/api/itinerary/comments/${id}`, {comment, type:"addComment"}, {
           headers: {
             Authorization: "Bearer " + token
           }
@@ -50,7 +50,7 @@ const itinerariesActions = {
   editComment: (id, comment, token) => {
     return async () => {
       try{
-        let response = await axios.put(`http://localhost:4000/api/itinerary/comments/${id}`, {comment, type:"editComment"}, {
+        let response = await axios.put(`https://mytinerary-castillo.herokuapp.com/api/itinerary/comments/${id}`, {comment, type:"editComment"}, {
           headers: {
             Authorization: "Bearer " + token
           }
@@ -65,7 +65,7 @@ const itinerariesActions = {
     return async () => {
       let response;
       try{
-        response = await axios.put(`http://localhost:4000/api/itinerary/comments/${id}`, {commentId, type:"deleteComment"},{
+        response = await axios.put(`https://mytinerary-castillo.herokuapp.com/api/itinerary/comments/${id}`, {commentId, type:"deleteComment"},{
           headers: {
             Authorization: "Bearer " + token
           }
@@ -82,7 +82,7 @@ const itinerariesActions = {
     return async () => {
       try {
         let response = await axios.get(
-          `http://localhost:4000/api/activities/${id}`
+          `https://mytinerary-castillo.herokuapp.com/api/activities/${id}`
         );
         if (response.data.success) {
           return response.data.response[0].activities;

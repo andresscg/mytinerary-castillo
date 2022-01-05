@@ -4,7 +4,7 @@ const usersActions = {
   signUp: (newUser) => {
     return async (dispatch, getState) => {
       let response = await axios.post(
-        "http://localhost:4000/api/users/signup",
+        "https://mytinerary-castillo.herokuapp.com/api/users/signup",
         newUser
       );
       try {
@@ -21,7 +21,7 @@ const usersActions = {
     return async (dispatch, getState) => {
       try {
         let response = await axios.post(
-          "http://localhost:4000/api/users/signin",
+          "https://mytinerary-castillo.herokuapp.com/api/users/signin",
           signUser
         );
         if (response.data.success) {
@@ -42,7 +42,7 @@ const usersActions = {
     return async (dispatch, getState) => {
       try {
         let response = await axios.get(
-          "http://localhost:4000/api/verifyToken",
+          "https://mytinerary-castillo.herokuapp.com/api/verifyToken",
           {
             headers: {
               Authorization: "Bearer " + token,
