@@ -70,7 +70,7 @@
   color: #fff;
   background-color: transparent;
   border: none;
-  display: flex;
+  /* display: flex; */
   gap: 10px;
   align-items: center;
   text-decoration: none;
@@ -84,7 +84,7 @@
   color: #fff;
   background-color: transparent;
   border: none;
-  display: flex;
+  /* display: flex; */
   gap: 10px;
   align-items: center;
   text-decoration: none;
@@ -158,6 +158,7 @@ div[role='menu'].visible {
     font-size: 50px;
   }
 
+
   .nav-menu.active {
     background: #242222;
     left: 0;
@@ -170,7 +171,8 @@ div[role='menu'].visible {
     text-align: center;
     padding: 2rem;
     width: 100%;
-    display: table;
+    display: flex;
+    justify-content: center;
     font-size: 30px;
   }
 
@@ -225,5 +227,15 @@ div[role='menu'].visible {
     background: #fff;
     color: #242424;
     transition: 250ms;
+  }
+}
+
+@media screen and (min-width: 960px){
+  .nav-links-icon {
+    display: flex;
+  }
+
+  .user-name {
+    display: flex;
   }
 }
